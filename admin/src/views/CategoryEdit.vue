@@ -1,28 +1,20 @@
 <template>
-    <div>
-        <h1>新建分类</h1>
-        <el-form label-width="120" @submit.native.prevent="save">
-            <el-form-item label="名称">
-                <el-input v-model="model.name"></el-input>
-            </el-form-item>
-            <el-form-item>
-                <el-button type="primary" native-type="submit">保存</el-button>
-            </el-form-item>
-        </el-form>
-    </div>
+   <el-table :data="tableData">
+     <el-table-column prop="date" label="Date" width="140" />
+     <el-table-column prop="name" label="Name" width="120" />
+     <el-table-column prop="address" label="Address" />
+   </el-table>
 </template>
 
-<script>
-export default {
-    data() {
-        return {
-            model: {}
-        }
-    },
-    methods: {
-        save() {
-            console.log('save')
-        }
-    }
+<script setup>
+import { ref } from 'vue'
+
+const item = {
+  date: '2016-05-02',
+  name: 'Tom',
+  address: 'No. 189, Grove St, Los Angeles',
 }
+const tableData = ref(Array.from({ length: 20 }).fill(item))
 </script>
+
+<style scoped></style>
